@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  font-family: "Lato", sans-serif;
+  transition: 0.2s;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0px 40px;
+  height: 100%;
+}
+
+.header__container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.title {
+font-size: 30px;
+}
+
+.main {
+  display: flex;
+  padding-top: 30px;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.main__container {
+  width: 100%;
+}
+
+.main__decor-box {
+  display: flex;
+  gap: 20px;
+  justify-content: left;
+  align-items: center;
+}
+
+.main__colors-box {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__colors-input {
+  width: 100px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.keyboard__lights {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.main__info-language {
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.keyboard__text-area {
+  min-width: 100%;
+  height: 120px;
+  min-height: 120px;
+  max-height: 300px;
+  margin-bottom: 30px;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  background-color: #ada1a1;
+  padding: 20px;
+  resize: vertical;
+  transition: 0.2s;
+}
+
+.keyboard__wrapper {
+  max-width: 1008px;
+  width: 100%;
+  background-color: #ada1a1;
+  overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  order: 2;
+}
+
+.row {
+  display: flex;
+}
+
+.keys {
+  width: 56px;
+  height: 56px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  transition: 0.2s;
+  z-index: 5;
+}
+
+.backspace_key {
+  width: 166px;
+}
+
+.tab_key {
+  width: 79px;
+}
+
+.del_key {
+  width: 79px;
+}
+
+.caps_lock_key {
+  width: 166px;
+}
+
+.enter_key {
+  width: 120px;
+}
+
+.shift_key {
+}
+
+.shift_right {
+  width: 120px;
+}
+
+.shift_left {
+  width: 166px;
+}
+
+.space_key {
+  width: 486px;
+}
+
+.main__night-day {
+  width: 80px;
+  height: 30px;
+  background-color: #e6e6e6;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+
+.main__night-day_toggle {
+  width: 20px;
+  height: 20px;
+  background-color: #ada1a1;
+  border-radius: 50px;
+  margin: 0 5px;
+  position: absolute;
+  left: 0;
+  transition: 0.2s;
+}
+
+.footer {
+  display: flex;
+}
+
+.footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.footer__link {
+  display: flex;
+  align-items: center;
+}
+.footer__icon {
+  height: 50px;
+  width: 50px;
+}
+
+.footer__text-link {
+  padding-left: 20px;
+  padding-right: 20px;
+}
