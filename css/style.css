@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   min-height: 100%;
   font-family: "Lato", sans-serif;
+  color: rgb(54, 54, 54);
   background: #ececec;
   transition: 0.2s;
 }
@@ -187,10 +188,42 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
   text-align: right;
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  align-items: flex-end;
+  
 }
 
 .main__info-language.active {
   color: #ececec;
+}
+
+.main__lang-button {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  width: 65px;
+  height: 35px;
+  background: #ada1a1;
+  margin: 10px 80px 0px 0px;
+  padding: 05px;
+  border-radius: 15px;
+  color: #ececec;
+  cursor: pointer;
+  color: rgb(54, 54, 54);
+  font-size: 20px;
+}
+.main__lang-button_en.active {
+  color: rgb(54, 54, 54);
+  font-size: 20px;
+  
+}
+
+.main__lang-button_rs.active {
+  color: rgb(54, 54, 54);
+  font-size: 20px;
+  
 }
 
 .keyboard__text-area {
@@ -259,7 +292,7 @@ body {
 
 .keyboard__key.keys_night.active {
   border: solid 1px #ececec;
-  color:#ececec;
+  color: #ececec;
   box-shadow: inset 3px 3px 6px #0002, inset -3px -3px 6px #ececec4c;
 }
 
@@ -280,12 +313,10 @@ body {
 
 @keyframes keys_night_animation {
   0% {
-    
     color: #000;
     box-shadow: inset 3px 3px 6px #0002, inset -3px -3px 6px #ececec4c;
   }
   100% {
-    
     color: #ececec;
     box-shadow: inset 3px 3px 6px #0002, inset -3px -3px 6px #ececec4c;
   }
