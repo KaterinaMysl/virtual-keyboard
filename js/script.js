@@ -1825,13 +1825,21 @@ shiftLeft.addEventListener('mousedown', function () {
         capsRs.classList.add('hidden');
         shiftCapsRs.classList.remove('hidden');
       }
-    } else {
+    } else if (capsEn.classList.contains('hidden') && capsRs.classList.contains('hidden')) {
       if (shiftOn) {
         caseDownEn.classList.add('hidden');
         caseUpEn.classList.remove('hidden');
         caseDownRs.classList.add('hidden');
         caseUpRs.classList.remove('hidden');
+      } console.log(!shiftOn)
+    } else if (!capsEn.classList.contains('hidden') && !capsRs.classList.contains('hidden')) {
+      if (!shiftOn) {
+        caseDownEn.classList.add('hidden');
+        caseUpEn.classList.remove('hidden');
+        caseDownRs.classList.add('hidden');
+        caseUpRs.classList.remove('hidden');
       }
+
     }
 
   });
@@ -1892,31 +1900,6 @@ function toggleLanguage() {
   } else {
     languageToggleBtnText.textContent = 'ru';
   }
-}
-
-
-for (const key of keys) {
-
-  key.addEventListener('keydown', () => {
-    if (!key.querySelector('.en').classList.contains('hidden')) { // язык - английский
-
-      if (key.classList.contains('Key1') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '!';
-      } else if (key.classList.contains('Key2') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '@';
-      } else if (key.classList.contains('Key3') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '#';
-      }
-    } else { // язык - русский
-      if (key.classList.contains('Key1') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '!';
-      } else if (key.classList.contains('Key2') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '';
-      } else if (key.classList.contains('Key3') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '№';
-      }
-    }
-  });
 }
 
 
@@ -2001,11 +1984,6 @@ document.addEventListener('click', (e) => {
 
 
 
-
-
-
-
-
 function pressKey(e) {
 
   const keyText = e.target.innerText;
@@ -2073,7 +2051,7 @@ function pressKey(e) {
       break;
     case 'Tab': {
       e.preventDefault();
-      textInput.value = `${textInput.value.slice(0, cursorPos) + textInput.value.slice(cursorPos)} '\t'`;
+      textInput.value = textInput.value.slice(0, cursorPos) + '\t' + textInput.value.slice(cursorPos);
       textInput.selectionStart = cursorPos + 1;
       textInput.selectionEnd = cursorPos + 1;
       break;
