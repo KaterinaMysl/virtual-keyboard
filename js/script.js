@@ -737,7 +737,7 @@ let addBlock = function () {
 
 
     `)
-    const row4 = document.createElement("div");
+  const row4 = document.createElement("div");
   row4.className = "keyboard__row";
   keyboardButtons.append(row4);
   row4.insertAdjacentHTML('beforeend', `
@@ -928,7 +928,7 @@ let addBlock = function () {
 
 
     `)
-    const row5 = document.createElement("div");
+  const row5 = document.createElement("div");
   row5.className = "keyboard__row";
   keyboardButtons.append(row5);
   row5.insertAdjacentHTML('beforeend', `
@@ -1062,13 +1062,9 @@ let addBlock = function () {
     </div>
   </div>
 
-
-
-
-
     `)
 
-    const sistem = document.createElement("div");
+  const sistem = document.createElement("div");
   sistem.className = "main__info-sistem";
   sistem.innerText = 'Клавиатура создана в операционной системе Windows';
   mainCont.append(sistem);
@@ -1110,6 +1106,10 @@ let addBlock = function () {
 }
 addBlock('');
 
+
+
+
+
 const keys = document.querySelectorAll('.keyboard__key');
 const keysAll = document.querySelector('.keyboard__keys');
 const title = document.querySelector('.title');
@@ -1130,12 +1130,13 @@ const arrowDown = document.querySelector('.ArrowDown');
 const arrowRight = document.querySelector('.ArrowRight');
 const win = document.querySelector('.win_key');
 const langButton = document.querySelector('.main__lang-button');
-const toggle = document.querySelector('.main__night-day_toggle');
+
 const nightDay = document.querySelector('.main__night-day');
 const textInput = document.querySelector('.keyboard__text-area');
 const changeColor = document.querySelector('.main__colors-box');
 const colorsInput = document.querySelector('.main__colors-input');
-const keyboardLights = document.querySelector('.keyboard__lights');
+constkeyboardLights = document.querySelector('.keyboard__lights');
+
 const keyboardWrapper = document.querySelector('.keyboard__wrapper');
 const wrapper = document.querySelector('.wrapper');
 const iconN = document.querySelector('.footer__icon-n');
@@ -1170,6 +1171,72 @@ const slash = document.querySelector('.Slash');
 
 
 
+class KeyboardDecor {
+  constructor() {
+    this.changeColor = document.querySelector('.main__colors-box');
+    this.colorsInput = document.querySelector('.main__colors-input');
+    this.keyboardLights = document.querySelector('.keyboard__lights');
+  }
+}
+const keyboardDecor = new KeyboardDecor();
+
+class NightMode {
+  constructor() {
+    this.toggle = document.querySelector('.main__night-day_toggle');
+    this.bodyA = document.querySelector('body');
+    this.wrapper = document.querySelector('.wrapper');
+    this.title = document.querySelector('.title');
+    this.infoLang = document.querySelector('.main__info-language');
+    this.nightDay = document.querySelector('.main__night-day');
+    this.keyboardWrapper = document.querySelector('.keyboard__wrapper');
+    this.textInput = document.querySelector('.keyboard__text-area');
+    this.changeColor = keyboardDecor.changeColor;
+    this.colorsInput = keyboardDecor.colorsInput;
+    this.keyboardLights = keyboardDecor.keyboardLights;
+    this.footer = document.querySelector('.footer');
+    this.iconD = document.querySelector('.footer__icon-d');
+    this.iconN = document.querySelector('.footer__icon-n');
+    this.textColor = document.querySelector('.main__text-color');
+    this.keys = document.querySelectorAll('.keyboard__key');
+  }
+
+  toggleNightMode() {
+    this.toggle.classList.toggle('active');
+    this.bodyA.classList.toggle('active');
+    this.wrapper.classList.toggle('active');
+    this.title.classList.toggle('active');
+    this.infoLang.classList.toggle('active');
+    this.nightDay.classList.toggle('active');
+    this.keyboardWrapper.classList.toggle('active');
+    this.textInput.classList.toggle('active');
+    this.changeColor.classList.toggle('active');
+    this.footer.classList.toggle('active');
+    this.iconD.classList.toggle('active');
+    this.iconN.classList.toggle('active');
+    this.textColor.classList.toggle('active');
+    for (let key of this.keys) {
+      key.classList.toggle('keys_night');
+    }
+  }
+  setupEventListeners() {
+    this.nightDay.addEventListener('click', () => this.toggleNightMode());
+  }
+}
+
+const nightMode = new NightMode();
+nightMode.setupEventListeners();
+
+const onColorsInputChange = () => {
+  for (let key of keys) {
+    key.style.color = colorsInput.value;
+  }
+  keyboardLights.style.background = colorsInput.value;
+  toggle.style.background = colorsInput.value;
+  langButton.style.background = colorsInput.value;
+}
+
+colorsInput.addEventListener('input', onColorsInputChange);
+
 
 
 let ctrlPressed4 = false;
@@ -1194,7 +1261,7 @@ window.addEventListener('keydown', function (e) {
 
   for (let i = 0; i < keys.length; i++) {
     let arr = keys[i].getAttribute('class').split(' ')[2];
-    // const keyClass = keys[i].getAttribute('class').split(' ').find(c => c.startsWith('Key'));
+
     const keyClass = arr;
 
 
@@ -1243,9 +1310,7 @@ window.addEventListener('keydown', function (e) {
         textInput.selectionEnd = cursorPos + value.length;
       }
 
-      if (e.code === 'BracketLeft') {
-        bracketLeft.classList.add('active')
-      }
+
 
       keys[i].classList.add('active');
     }
@@ -1385,7 +1450,7 @@ window.addEventListener('keyup', function (e) {
   for (let i = 0; i < keys.length; i++) {
     const keyClass = keys[i].getAttribute('class').split(' ').find(c => c.startsWith('Key'));
 
-    if (e.code === keyClass && e.code !== 'AltLeft' && e.code !== 'AltRight' && e.code !== 'ShiftRight' && e.code !== 'ShiftRight') {
+    if (e.code === keyClass && !['AltLeft', 'AltRight', 'ShiftRight', 'ShiftLeft'].includes(e.code)) {
       keys[i].classList.remove('active');
     }
   }
@@ -1397,10 +1462,9 @@ window.addEventListener('keyup', function (e) {
 
 
 
-window.addEventListener('keyup', function (e) {
+window.addEventListener('keyup', (e) => {
   for (let i = 0; i < keys.length; i++) {
     let arr = keys[i].getAttribute('class').split(' ')[2];
-    // const keyClass = keys[i].getAttribute('class').split(' ').find(c => c.startsWith('Key'));
     const keyClass = arr;
 
     if (e.code === keyClass && e.code !== 'AltLeft' && e.code !== 'AltRight' && e.code !== 'ShiftLeft' && e.code !== 'ShiftRight' && e.code !== 'Backspace' && e.code !== 'Delete' && e.code !== 'Enter' && e.code !== 'Tab' && e.code !== 'MetaLeft' && e.code !== 'CapsLock' && e.code !== 'ArrowUp' && e.code !== 'ArrowLeft' && e.code !== 'ArrowDown' && e.code !== 'ArrowRight') {
@@ -1557,13 +1621,12 @@ document.addEventListener("keydown", addTabIndentation);
 
 let capsLockOn = false;
 
-caps_lock_key.addEventListener("click", function () {
+caps_lock_key.addEventListener("click", () => {
   capsLockOn = !capsLockOn;
 
   const capsElements = document.querySelectorAll('.caps');
-  capsElements.forEach(function (element) {
+  capsElements.forEach((element) => {
     if (capsLockOn) {
-
       element.classList.remove('hidden');
     } else {
       element.classList.add('hidden');
@@ -1571,7 +1634,7 @@ caps_lock_key.addEventListener("click", function () {
   });
 
   const caseDownElements = document.querySelectorAll('.caseDown');
-  caseDownElements.forEach(function (element) {
+  caseDownElements.forEach((element) => {
     if (capsLockOn) {
       element.classList.add('hidden');
     } else {
@@ -1580,10 +1643,9 @@ caps_lock_key.addEventListener("click", function () {
   });
 });
 
-caps_lock_key.addEventListener("click", function (event) {
+caps_lock_key.addEventListener("click", (event) => {
   event.preventDefault();
 });
-
 
 
 document.addEventListener("keydown", function (e) {
@@ -1816,12 +1878,6 @@ shift_left.addEventListener('mouseup', function () {
 
 
 
-
-
-
-
-
-
 let currentLanguage = localStorage.getItem('language') || 'rs';
 
 
@@ -1954,7 +2010,7 @@ function pressKey(e) {
       textInput.selectionEnd = cursorPos;
       break;
     case 'Enter':
-      textInput.value = textInput.value.slice(0, cursorPos) + '\n' + textInput.value.slice(cursorPos);
+      textInput.value = `${textInput.value.slice(0, cursorPos)}\n${textInput.value.slice(cursorPos)}`;
       textInput.selectionStart = cursorPos + 1;
       textInput.selectionEnd = cursorPos + 1;
       break;
@@ -2003,9 +2059,9 @@ function pressKey(e) {
       textInput.selectionEnd = cursorPos + 1;
       break;
     case '':
-      const before = textInput.value.substring(0, cursorPos);
-      const after = textInput.value.substring(cursorPos);
-      textInput.value = before + ' ' + after;
+      const before = textInput.value.slice(0, cursorPos);
+      const after = textInput.value.slice(cursorPos);
+      textInput.value = `${before} ${after}`;
       textInput.selectionStart = cursorPos + 1;
       textInput.selectionEnd = cursorPos + 1;
       break;
@@ -2035,34 +2091,3 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-const toggleNightMode = () => {
-  toggle.classList.toggle('active');
-  bodyA.classList.toggle('active');
-  wrapper.classList.toggle('active');
-  title.classList.toggle('active');
-  infoLang.classList.toggle('active');
-  nightDay.classList.toggle('active');
-  keyboardWrapper.classList.toggle('active');
-  textInput.classList.toggle('active');
-  changeColor.classList.toggle('active');
-  footer.classList.toggle('active');
-  iconD.classList.toggle('active');
-  iconN.classList.toggle('active');
-  textColor.classList.toggle('active');
-  for (let key of keys) {
-    key.classList.toggle('keys_night');
-  }
-}
-
-nightDay.addEventListener('click', toggleNightMode);
-
-const onColorsInputChange = () => {
-  for (let key of keys) {
-    key.style.color = colorsInput.value;
-  }
-  keyboardLights.style.background = colorsInput.value;
-  toggle.style.background = colorsInput.value;
-  langButton.style.background = colorsInput.value;
-}
-
-colorsInput.addEventListener('input', onColorsInputChange);
