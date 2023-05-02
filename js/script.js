@@ -1,42 +1,42 @@
 
 
-let bodyA = document.querySelector('body');
+const bodyA = document.querySelector('body');
 
 let addBlock = function () {
   bodyA.className = "body";
-  let wrapper = document.createElement("div");
+  const wrapper = document.createElement("div");
   wrapper.className = "wrapper";
   bodyA.prepend(wrapper);
 
 
-  let headerA = document.createElement("header");
+  const headerA = document.createElement("header");
   headerA.className = "header";
   wrapper.prepend(headerA);
-  let headerCont = document.createElement("div");
+  const headerCont = document.createElement("div");
   headerCont.className = "header__container container";
   headerA.append(headerCont);
 
-  let title = document.createElement("h1");
+  const title = document.createElement("h1");
   title.className = "title";
   title.innerText = 'Virtual Keyboard';
   headerCont.prepend(title);
 
 
-  let mainA = document.createElement("main");
+  const mainA = document.createElement("main");
   mainA.className = "main";
   wrapper.append(mainA);
 
-  let mainCont = document.createElement("div");
+  const mainCont = document.createElement("div");
   mainCont.className = "main__container container";
   mainA.append(mainCont);
-  let decorBox = document.createElement("div");
+  const decorBox = document.createElement("div");
   decorBox.className = "main__decor-box";
   mainCont.append(decorBox);
 
-  let colorsBox = document.createElement("div");
+  const colorsBox = document.createElement("div");
   colorsBox.className = "main__colors-box";
   decorBox.append(colorsBox);
-  let decorText = document.createElement("div");
+  const decorText = document.createElement("div");
   decorText.className = "main__text-color";
   colorsBox.append(decorText);
   decorText.insertAdjacentHTML('beforeend', `
@@ -56,55 +56,55 @@ let addBlock = function () {
   <span>и</span>
   <span>я</span>
   `)
-  let colors = document.createElement("div");
+  const colors = document.createElement("div");
   colors.className = "main__colors";
   colorsBox.append(colors);
-  let colorsInput = document.createElement("input");
+  const colorsInput = document.createElement("input");
   colorsInput.className = "main__colors-input";
   colorsInput.type = "color";
   colorsInput.value = "#ada1a1";
   colors.append(colorsInput);
 
-  let nightDay = document.createElement("div");
+  const nightDay = document.createElement("div");
   nightDay.className = "main__night-day";
   decorBox.append(nightDay);
-  let toggle = document.createElement("div");
+  const toggle = document.createElement("div");
   toggle.className = "main__night-day_toggle";
   nightDay.append(toggle);
 
-  let infoLang = document.createElement("div");
+  const infoLang = document.createElement("div");
   infoLang.className = "main__info-language";
   infoLang.innerText = 'Смена языка Ctrl + Alt или кнопка:';
   mainCont.append(infoLang);
-  let langButton = document.createElement("button");
+  const langButton = document.createElement("button");
   langButton.className = "main__lang-button";
   langButton.type = "button";
   langButton.innerText = 'en';
   infoLang.append(langButton);
 
 
-  let keyboard = document.createElement("div");
+  const keyboard = document.createElement("div");
   keyboard.className = "main__keyboard keyboard";
   mainCont.append(keyboard);
-  let keyboardWrapper = document.createElement("div");
+  const keyboardWrapper = document.createElement("div");
   keyboardWrapper.className = "keyboard__wrapper";
   keyboard.append(keyboardWrapper);
 
-  let keyboardText = document.createElement("textarea");
+  const keyboardText = document.createElement("textarea");
   keyboardText.className = "keyboard__text-area";
   keyboardText.type = "textarea";
   keyboardWrapper.append(keyboardText);
 
-  let keyboardLights = document.createElement("div");
+  const keyboardLights = document.createElement("div");
   keyboardLights.className = "keyboard__lights";
   keyboardWrapper.append(keyboardLights);
 
 
-  let keyboardButtons = document.createElement("div");
+  const keyboardButtons = document.createElement("div");
   keyboardButtons.className = "keyboard__keys";
   keyboardWrapper.append(keyboardButtons);
 
-  let row1 = document.createElement("div");
+  const row1 = document.createElement("div");
   row1.className = "keyboard__row";
   keyboardButtons.append(row1);
   row1.insertAdjacentHTML('beforeend', `
@@ -331,7 +331,7 @@ let addBlock = function () {
 
 
     `)
-  let row2 = document.createElement("div");
+  const row2 = document.createElement("div");
   row2.className = "keyboard__row";
   keyboardButtons.append(row2);
   row2.insertAdjacentHTML('beforeend', `
@@ -547,7 +547,7 @@ let addBlock = function () {
   </div>
 
     `)
-  let row3 = document.createElement("div");
+  const row3 = document.createElement("div");
   row3.className = "keyboard__row";
   keyboardButtons.append(row3);
   row3.insertAdjacentHTML('beforeend', `
@@ -737,7 +737,7 @@ let addBlock = function () {
 
 
     `)
-  let row4 = document.createElement("div");
+    const row4 = document.createElement("div");
   row4.className = "keyboard__row";
   keyboardButtons.append(row4);
   row4.insertAdjacentHTML('beforeend', `
@@ -928,7 +928,7 @@ let addBlock = function () {
 
 
     `)
-  let row5 = document.createElement("div");
+    const row5 = document.createElement("div");
   row5.className = "keyboard__row";
   keyboardButtons.append(row5);
   row5.insertAdjacentHTML('beforeend', `
@@ -962,7 +962,7 @@ let addBlock = function () {
       <div class="shiftCaps hidden">Win</div>
     </div>
   </div>
-  <div class="keyboard__key key AltLeft alt_key alt_left">
+  <div class="keyboard__key key AltLeft alt_key altLeft">
     <div class="rs hidden">
       <div class="caseDown">Alt</div>
       <div class="caseUp hidden">Alt</div>
@@ -991,7 +991,7 @@ let addBlock = function () {
       <div class="shiftCaps hidden"> </div>
     </div>
   </div>
-  <div class="keyboard__key key AltRight alt_key alt_right">
+  <div class="keyboard__key key AltRight alt_key altRight">
     <div class="rs hidden">
       <div class="caseDown">Alt</div>
       <div class="caseUp hidden">Alt</div>
@@ -1068,105 +1068,105 @@ let addBlock = function () {
 
     `)
 
-    let sistem = document.createElement("div");
-    sistem.className = "main__info-sistem";
-    sistem.innerText = 'Клавиатура создана в операционной системе Windows';
-    mainCont.append(sistem);
+    const sistem = document.createElement("div");
+  sistem.className = "main__info-sistem";
+  sistem.innerText = 'Клавиатура создана в операционной системе Windows';
+  mainCont.append(sistem);
 
 
-  let footerA = document.createElement("footer");
+  const footerA = document.createElement("footer");
   footerA.className = "footer";
   wrapper.append(footerA);
 
 
-  let footerCont = document.createElement("div");
+  const footerCont = document.createElement("div");
   footerCont.className = "footer__container container";
   footerA.append(footerCont);
 
-  let link = document.createElement("a");
+  const link = document.createElement("a");
   link.className = "footer__link";
   link.href = 'https://github.com/KaterinaMysl/virtual-keyboard';
   footerCont.append(link);
-  let iconD = document.createElement("img");
+  const iconD = document.createElement("img");
   iconD.className = "footer__icon-d";
   iconD.src = './img/github.png';
   iconD.alt = "github icon";
   link.append(iconD);
-  let iconN = document.createElement("img");
+  const iconN = document.createElement("img");
   iconN.className = "footer__icon-n";
   iconN.src = './img/github-night.png';
   iconN.alt = "github icon";
   link.append(iconN);
 
-  let textLink = document.createElement("div");
+  const textLink = document.createElement("div");
   textLink.className = "footer__text-link";
   textLink.innerText = 'virtual-keyboard-code';
   link.append(textLink);
 
-  let name = document.createElement("div");
+  const name = document.createElement("div");
   name.className = "footer__name";
   name.innerText = 'by Kate Mysliuchyk';
   footerCont.append(name);
 }
 addBlock('');
 
-let keys = document.querySelectorAll('.keyboard__key');
-let keysAll = document.querySelector('.keyboard__keys');
-let title = document.querySelector('.title');
-let infoLang = document.querySelector('.main__info-language');
-let spaceKey = document.querySelector('.space_key');
-let shift_left = document.querySelector('.shift_left');
-let shift_right = document.querySelector('.shift_right');
-let caps_lock_key = document.querySelector('.caps_lock_key');
-let ctrl_right = document.querySelector('.ctrl_right');
-let ctrl_left = document.querySelector('.ctrl_left');
-let alt_right = document.querySelector('.alt_right');
-let alt_left = document.querySelector('.alt_left');
-let tab = document.querySelector('.tab_key');
-let delete_key = document.querySelector('.del_key');
-let arrowUp = document.querySelector('.ArrowUp');
-let arrowLeft = document.querySelector('.ArrowLeft');
-let arrowDown = document.querySelector('.ArrowDown');
-let arrowRight = document.querySelector('.ArrowRight');
-let win = document.querySelector('.win_key');
-let langButton = document.querySelector('.main__lang-button');
-let toggle = document.querySelector('.main__night-day_toggle');
-let nightDay = document.querySelector('.main__night-day');
-let text_input = document.querySelector('.keyboard__text-area');
-let change_color = document.querySelector('.main__colors-box');
-let colors_input = document.querySelector('.main__colors-input');
-let keyboard_lights = document.querySelector('.keyboard__lights');
-let keyboard_wrapper = document.querySelector('.keyboard__wrapper');
-let wrapper = document.querySelector('.wrapper');
-let iconN = document.querySelector('.footer__icon-n');
-let iconD = document.querySelector('.footer__icon-d');
-let footer = document.querySelector('.footer');
-let rs = document.querySelector('.rs');
-let en = document.querySelector('.en');
-let textColor = document.querySelector('.main__text-color');
-let backq = document.querySelector('.Backquote');
-let dig1 = document.querySelector('.Digit1');
-let dig2 = document.querySelector('.Digit2');
-let dig3 = document.querySelector('.Digit3');
-let dig4 = document.querySelector('.Digit4');
-let dig5 = document.querySelector('.Digit5');
-let dig6 = document.querySelector('.Digit6');
-let dig7 = document.querySelector('.Digit7');
-let dig8 = document.querySelector('.Digit8');
-let dig9 = document.querySelector('.Digit9');
-let dig0 = document.querySelector('.Digit0');
-let minus = document.querySelector('.Minus');
-let equal = document.querySelector('.Equal');
-let backspace = document.querySelector('.Backspace');
-let bracketLeft = document.querySelector('.BracketLeft');
-let bracketRight = document.querySelector('.BracketRight');
-let backslash = document.querySelector('.Backslash');
-let semicolon = document.querySelector('.Semicolon');
-let quote = document.querySelector('.Quote');
-let enter = document.querySelector('.Enter');
-let comma = document.querySelector('.Comma');
-let period = document.querySelector('.Period');
-let slash = document.querySelector('.Slash');
+const keys = document.querySelectorAll('.keyboard__key');
+const keysAll = document.querySelector('.keyboard__keys');
+const title = document.querySelector('.title');
+const infoLang = document.querySelector('.main__info-language');
+const spaceKey = document.querySelector('.space_key');
+const shift_left = document.querySelector('.shift_left');
+const shift_right = document.querySelector('.shift_right');
+const caps_lock_key = document.querySelector('.caps_lock_key');
+const ctrl_right = document.querySelector('.ctrl_right');
+const ctrl_left = document.querySelector('.ctrl_left');
+const altRight = document.querySelector('.altRight');
+const altLeft = document.querySelector('.altLeft');
+const tab = document.querySelector('.tab_key');
+const delete_key = document.querySelector('.del_key');
+const arrowUp = document.querySelector('.ArrowUp');
+const arrowLeft = document.querySelector('.ArrowLeft');
+const arrowDown = document.querySelector('.ArrowDown');
+const arrowRight = document.querySelector('.ArrowRight');
+const win = document.querySelector('.win_key');
+const langButton = document.querySelector('.main__lang-button');
+const toggle = document.querySelector('.main__night-day_toggle');
+const nightDay = document.querySelector('.main__night-day');
+const textInput = document.querySelector('.keyboard__text-area');
+const changeColor = document.querySelector('.main__colors-box');
+const colorsInput = document.querySelector('.main__colors-input');
+const keyboardLights = document.querySelector('.keyboard__lights');
+const keyboardWrapper = document.querySelector('.keyboard__wrapper');
+const wrapper = document.querySelector('.wrapper');
+const iconN = document.querySelector('.footer__icon-n');
+const iconD = document.querySelector('.footer__icon-d');
+const footer = document.querySelector('.footer');
+const rs = document.querySelector('.rs');
+const en = document.querySelector('.en');
+const textColor = document.querySelector('.main__text-color');
+const backq = document.querySelector('.Backquote');
+const dig1 = document.querySelector('.Digit1');
+const dig2 = document.querySelector('.Digit2');
+const dig3 = document.querySelector('.Digit3');
+const dig4 = document.querySelector('.Digit4');
+const dig5 = document.querySelector('.Digit5');
+const dig6 = document.querySelector('.Digit6');
+const dig7 = document.querySelector('.Digit7');
+const dig8 = document.querySelector('.Digit8');
+const dig9 = document.querySelector('.Digit9');
+const dig0 = document.querySelector('.Digit0');
+const minus = document.querySelector('.Minus');
+const equal = document.querySelector('.Equal');
+const backspace = document.querySelector('.Backspace');
+const bracketLeft = document.querySelector('.BracketLeft');
+const bracketRight = document.querySelector('.BracketRight');
+const backslash = document.querySelector('.Backslash');
+const semicolon = document.querySelector('.Semicolon');
+const quote = document.querySelector('.Quote');
+const enter = document.querySelector('.Enter');
+const comma = document.querySelector('.Comma');
+const period = document.querySelector('.Period');
+const slash = document.querySelector('.Slash');
 
 
 
@@ -1179,10 +1179,10 @@ window.addEventListener('keydown', function (e) {
 
   if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
     ctrlPressed4 = true;
-    if (e.code == 'ControlLeft') {
+    if (e.code === 'ControlLeft') {
       ctrl_left.classList.add('active');
     }
-    if (e.code == 'ControlRight') {
+    if (e.code === 'ControlRight') {
       ctrl_right.classList.add('active');
     }
     return;
@@ -1196,139 +1196,169 @@ window.addEventListener('keydown', function (e) {
     let arr = keys[i].getAttribute('class').split(' ')[2];
     // const keyClass = keys[i].getAttribute('class').split(' ').find(c => c.startsWith('Key'));
     const keyClass = arr;
-   
 
-    if (e.code === keyClass && e.code !== 'AltLeft' && e.code !== 'AltRight' && e.code !== 'ShiftLeft' && e.code !== 'ShiftRight' && e.code !== 'Backspace' && e.code !== 'Delete' && e.code !== 'Enter' && e.code !== 'Tab' && e.code !== 'MetaLeft' && e.code !== 'CapsLock' && e.code !== 'ArrowUp' && e.code !== 'ArrowLeft' && e.code !== 'ArrowDown' && e.code !== 'ArrowRight') {
+
+    if (e.code === keyClass && e.code !== 'AltLeft' && e.code !== 'AltRight' && e.code !== 'ShiftLeft' && e.code !== 'ShiftRight' && e.code !== 'Backspace' && e.code !== 'Delete' && e.code !== 'Enter' && e.code !== 'Tab' && e.code !== 'MetaLeft' && e.code !== 'CapsLock' && e.code !== 'ArrowUp' && e.code !== 'ArrowLeft' && e.code !== 'ArrowDown' && e.code !== 'ArrowRight' && e.code !== 'Space') {
       const lnrs = keys[i].querySelector('.rs');
       const lnen = keys[i].querySelector('.en');
+      const caprs = keys[i].querySelector('.rs .caps');
+      const capen = keys[i].querySelector('.en .caps');
 
-      if (!lnrs.classList.contains('hidden') && lnrs) {
+
+      if (!lnrs.classList.contains('hidden') && lnrs && caprs.classList.contains('hidden')) {
         e.preventDefault();
         const value = lnrs.querySelector('.caseDown').textContent;
-        text_input.value += value;
-      }
-      else if (!lnen.classList.contains('hidden') && lnen) {
+        const cursorPos = textInput.selectionStart;
+        const textBeforeCursor = textInput.value.substring(0, cursorPos);
+        const textAfterCursor = textInput.value.substring(cursorPos);
+        textInput.value = textBeforeCursor + value + textAfterCursor;
+        textInput.selectionStart = cursorPos + value.length;
+        textInput.selectionEnd = cursorPos + value.length;
+      } else if (!lnen.classList.contains('hidden') && lnen && capen.classList.contains('hidden')) {
         e.preventDefault();
         const value = lnen.querySelector('.caseDown').textContent;
-        text_input.value += value;
+        const cursorPos = textInput.selectionStart;
+        const textBeforeCursor = textInput.value.substring(0, cursorPos);
+        const textAfterCursor = textInput.value.substring(cursorPos);
+        textInput.value = textBeforeCursor + value + textAfterCursor;
+        textInput.selectionStart = cursorPos + value.length;
+        textInput.selectionEnd = cursorPos + value.length;
+      } else if (!lnrs.classList.contains('hidden') && lnrs && !caprs.classList.contains('hidden')) {
+        e.preventDefault();
+        const value = lnrs.querySelector('.caps').textContent;
+        const cursorPos = textInput.selectionStart;
+        const textBeforeCursor = textInput.value.substring(0, cursorPos);
+        const textAfterCursor = textInput.value.substring(cursorPos);
+        textInput.value = textBeforeCursor + value + textAfterCursor;
+        textInput.selectionStart = cursorPos + value.length;
+        textInput.selectionEnd = cursorPos + value.length;
+      } else if (!lnen.classList.contains('hidden') && lnen && !capen.classList.contains('hidden')) {
+        e.preventDefault();
+        const value = lnen.querySelector('.caps').textContent;
+        const cursorPos = textInput.selectionStart;
+        const textBeforeCursor = textInput.value.substring(0, cursorPos);
+        const textAfterCursor = textInput.value.substring(cursorPos);
+        textInput.value = textBeforeCursor + value + textAfterCursor;
+        textInput.selectionStart = cursorPos + value.length;
+        textInput.selectionEnd = cursorPos + value.length;
       }
 
-      if (e.code == 'BracketLeft' ) {
+      if (e.code === 'BracketLeft') {
         bracketLeft.classList.add('active')
       }
 
       keys[i].classList.add('active');
     }
 
-    if (e.code == 'Space') {
+    if (e.code === 'Space') {
       spaceKey.classList.add('active')
     }
-    if (e.code == 'Backquote') {
+    if (e.code === 'Backquote') {
       backq.classList.add('active')
     }
-    if (e.code == 'Digit1') {
+    if (e.code === 'Digit1') {
       dig1.classList.add('active')
     }
-    if (e.code == 'Digit2') {
+    if (e.code === 'Digit2') {
       dig2.classList.add('active')
     }
-    if (e.code == 'Digit3') {
+    if (e.code === 'Digit3') {
       dig3.classList.add('active')
     }
-    if (e.code == 'Digit4') {
+    if (e.code === 'Digit4') {
       dig4.classList.add('active')
     }
-    if (e.code == 'Digit5') {
+    if (e.code === 'Digit5') {
       dig5.classList.add('active')
     }
-    if (e.code == 'Digit6') {
+    if (e.code === 'Digit6') {
       dig6.classList.add('active')
     }
-    if (e.code == 'Digit7') {
+    if (e.code === 'Digit7') {
       dig7.classList.add('active')
     }
-    if (e.code == 'Digit8') {
+    if (e.code === 'Digit8') {
       dig8.classList.add('active')
     }
-    if (e.code == 'Digit9') {
+    if (e.code === 'Digit9') {
       dig9.classList.add('active')
     }
-    if (e.code == 'Digit0') {
+    if (e.code === 'Digit0') {
       dig0.classList.add('active')
     }
-    if (e.code == 'Minus') {
+    if (e.code === 'Minus') {
       minus.classList.add('active')
     }
-    if (e.code == 'Equal') {
+    if (e.code === 'Equal') {
       equal.classList.add('active')
     }
-    if (e.code == 'BracketLeft') {
+    if (e.code === 'BracketLeft') {
       bracketLeft.classList.add('active')
     }
-    if (e.code == 'BracketRight') {
+    if (e.code === 'BracketRight') {
       bracketRight.classList.add('active')
     }
-    if (e.code == 'Backslash') {
+    if (e.code === 'Backslash') {
       backslash.classList.add('active')
     }
-    if (e.code == 'Semicolon') {
+    if (e.code === 'Semicolon') {
       semicolon.classList.add('active')
     }
-    if (e.code == 'Quote') {
+    if (e.code === 'Quote') {
       quote.classList.add('active')
     }
-    if (e.code == 'Enter') {
+    if (e.code === 'Enter') {
       enter.classList.add('active')
     }
-    if (e.code == 'Comma') {
+    if (e.code === 'Comma') {
       comma.classList.add('active')
     }
-    if (e.code == 'Period') {
+    if (e.code === 'Period') {
       period.classList.add('active')
     }
-    if (e.code == 'Slash') {
+    if (e.code === 'Slash') {
       slash.classList.add('active')
     }
-    if (e.code == 'ShiftLeft' && e.location === 1) {
+    if (e.code === 'ShiftLeft' && e.location === 1) {
 
       shift_left.classList.add('active')
     }
-    if (e.code == 'ShiftRight' && e.location === 2) {
+    if (e.code === 'ShiftRight' && e.location === 2) {
       shift_right.classList.add('active')
     }
-    if (e.code == 'CapsLock') {
+    if (e.code === 'CapsLock') {
       caps_lock_key.classList.add('active');
     }
 
-    if (e.code == 'AltLeft' && e.location === 1) {
-      alt_left.classList.add('active');
+    if (e.code === 'AltLeft' && e.location === 1) {
+      altLeft.classList.add('active');
     }
-    if (e.code == 'AltRight' && e.location === 2) {
-      alt_right.classList.add('active');
+    if (e.code === 'AltRight' && e.location === 2) {
+      altRight.classList.add('active');
 
     }
-    if (e.code == 'Tab') {
+    if (e.code === 'Tab') {
       tab.classList.add('active');
     }
-    if (e.code == 'Delete') {
+    if (e.code === 'Delete') {
       delete_key.classList.add('active');
     }
-    if (e.code == 'ArrowUp') {
+    if (e.code === 'ArrowUp') {
       arrowUp.classList.add('active');
     }
-    if (e.code == 'ArrowLeft') {
+    if (e.code === 'ArrowLeft') {
       arrowLeft.classList.add('active');
     }
-    if (e.code == 'ArrowDown') {
+    if (e.code === 'ArrowDown') {
       arrowDown.classList.add('active');
     }
-    if (e.code == 'ArrowRight') {
+    if (e.code === 'ArrowRight') {
       arrowRight.classList.add('active');
     }
-    if (e.code == 'MetaLeft') {
+    if (e.code === 'MetaLeft') {
       win.classList.add('active');
     }
-    if (e.code == 'Backspace') {
+    if (e.code === 'Backspace') {
       backspace.classList.add('active');
     }
   }
@@ -1341,10 +1371,10 @@ window.addEventListener('keyup', function (e) {
     ctrlPressed4 = false;
     savedKeys = {};
 
-    if (e.code == 'ControlLeft') {
+    if (e.code === 'ControlLeft') {
       ctrl_left.classList.remove('active');
     }
-    if (e.code == 'ControlRight') {
+    if (e.code === 'ControlRight') {
       ctrl_right.classList.remove('active');
     }
     return;
@@ -1367,35 +1397,6 @@ window.addEventListener('keyup', function (e) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 window.addEventListener('keyup', function (e) {
   for (let i = 0; i < keys.length; i++) {
     let arr = keys[i].getAttribute('class').split(' ')[2];
@@ -1406,148 +1407,148 @@ window.addEventListener('keyup', function (e) {
       keys[i].classList.remove('active')
       keys[i].classList.add('remove')
     }
-    if (e.code == 'Space') {
+    if (e.code === 'Space') {
       spaceKey.classList.remove('active');
       spaceKey.classList.add('remove');
     }
-    if (e.code == 'Backquote') {
+    if (e.code === 'Backquote') {
       backq.classList.remove('active');
       backq.classList.remove('remove');
     }
-    if (e.code == 'Digit1') {
+    if (e.code === 'Digit1') {
       dig1.classList.remove('active');
     }
-    if (e.code == 'Digit2') {
+    if (e.code === 'Digit2') {
       dig2.classList.remove('active');
     }
-    if (e.code == 'Digit3') {
+    if (e.code === 'Digit3') {
       dig3.classList.remove('active');
     }
-    if (e.code == 'Digit4') {
+    if (e.code === 'Digit4') {
       dig4.classList.remove('active');
     }
-    if (e.code == 'Digit5') {
+    if (e.code === 'Digit5') {
       dig5.classList.remove('active');
     }
-    if (e.code == 'Digit6') {
+    if (e.code === 'Digit6') {
       dig6.classList.remove('active');
     }
-    if (e.code == 'Digit7') {
+    if (e.code === 'Digit7') {
       dig7.classList.remove('active');
     }
-    if (e.code == 'Digit8') {
+    if (e.code === 'Digit8') {
       dig8.classList.remove('active');
     }
-    if (e.code == 'Digit9') {
+    if (e.code === 'Digit9') {
       dig9.classList.remove('active');
     }
-    if (e.code == 'Digit0') {
+    if (e.code === 'Digit0') {
       dig0.classList.remove('active');
     }
-    if (e.code == 'Minus') {
+    if (e.code === 'Minus') {
       minus.classList.remove('active');
     }
-    if (e.code == 'Equal') {
+    if (e.code === 'Equal') {
       equal.classList.remove('active');
     }
-    if (e.code == 'BracketLeft') {
+    if (e.code === 'BracketLeft') {
       bracketLeft.classList.remove('active');
     }
-    if (e.code == 'BracketRight') {
+    if (e.code === 'BracketRight') {
       bracketRight.classList.remove('active');
     }
-    if (e.code == 'Backslash') {
+    if (e.code === 'Backslash') {
       backslash.classList.remove('active');
     }
-    if (e.code == 'Semicolon') {
+    if (e.code === 'Semicolon') {
       semicolon.classList.remove('active');
     }
-    if (e.code == 'Quote') {
+    if (e.code === 'Quote') {
       quote.classList.remove('active');
     }
-    if (e.code == 'Enter') {
+    if (e.code === 'Enter') {
       enter.classList.remove('active');
     }
-    if (e.code == 'Comma') {
-      comma.classList.remove('active')
+    if (e.code === 'Comma') {
+      comma.classList.remove('active');
     }
-    if (e.code == 'Period') {
-      period.classList.remove('active')
+    if (e.code === 'Period') {
+      period.classList.remove('active');
     }
-    if (e.code == 'Slash') {
-      slash.classList.remove('active')
+    if (e.code === 'Slash') {
+      slash.classList.remove('active');
     }
-    if (e.code == 'ShiftLeft' && e.location === 1) {
+    if (e.code === 'ShiftLeft' && e.location === 1) {
       shift_left.classList.remove('active');
       shift_left.classList.remove('remove');
     }
-    if (e.code == 'ShiftRight' && e.location === 2) {
+    if (e.code === 'ShiftRight' && e.location === 2) {
       shift_right.classList.remove('active');
       shift_right.classList.remove('remove');
     }
-    if (e.code == 'CapsLock') {
-      caps_lock_key.classList.remove('active')
-      caps_lock_key.classList.remove('remove')
+    if (e.code === 'CapsLock') {
+      caps_lock_key.classList.remove('active');
+      caps_lock_key.classList.remove('remove');
     }
 
 
-    if (e.code == 'AltLeft' && e.location === 1) {
-      alt_left.classList.remove('active')
-      alt_left.classList.remove('remove')
+    if (e.code === 'AltLeft' && e.location === 1) {
+      altLeft.classList.remove('active');
+      altLeft.classList.remove('remove');
     }
-    if (e.code == 'AltRight' && e.location === 2) {
-      alt_right.classList.remove('active')
-      alt_right.classList.remove('remove')
+    if (e.code === 'AltRight' && e.location === 2) {
+      altRight.classList.remove('active');
+      altRight.classList.remove('remove');
     }
-    if (e.code == 'Tab') {
-      tab.classList.remove('active')
-      tab.classList.remove('remove')
+    if (e.code === 'Tab') {
+      tab.classList.remove('active');
+      tab.classList.remove('remove');
     }
-    if (e.code == 'Delete') {
-      delete_key.classList.remove('active')
-      delete_key.classList.remove('remove')
+    if (e.code === 'Delete') {
+      delete_key.classList.remove('active');
+      delete_key.classList.remove('remove');
     }
-    if (e.code == 'ArrowUp') {
-      arrowUp.classList.remove('active')
-      arrowUp.classList.remove('remove')
+    if (e.code === 'ArrowUp') {
+      arrowUp.classList.remove('active');
+      arrowUp.classList.remove('remove');
     }
-    if (e.code == 'ArrowLeft') {
-      arrowLeft.classList.remove('active')
-      arrowLeft.classList.remove('remove')
+    if (e.code === 'ArrowLeft') {
+      arrowLeft.classList.remove('active');
+      arrowLeft.classList.remove('remove');
     }
-    if (e.code == 'ArrowDown') {
-      arrowDown.classList.remove('active')
-      arrowDown.classList.remove('remove')
+    if (e.code === 'ArrowDown') {
+      arrowDown.classList.remove('active');
+      arrowDown.classList.remove('remove');
     }
-    if (e.code == 'ArrowRight') {
-      arrowRight.classList.remove('active')
-      arrowRight.classList.remove('remove')
+    if (e.code === 'ArrowRight') {
+      arrowRight.classList.remove('active');
+      arrowRight.classList.remove('remove');
     }
-    if (e.code == 'MetaLeft') {
-      win.classList.remove('active')
-      win.classList.remove('remove')
+    if (e.code === 'MetaLeft') {
+      win.classList.remove('active');
+      win.classList.remove('remove');
 
     }
-    if (e.code == 'Backspace') {
-      backspace.classList.remove('active')
+    if (e.code === 'Backspace') {
+      backspace.classList.remove('active');
     }
     setTimeout(() => {
-      keys[i].classList.remove('remove')
-    }, 200)
+      keys[i].classList.remove('remove');
+    }, 200);
   }
-})
+});
 
 
 function addTabIndentation(e) {
   if (e.key === "Tab") {
     e.preventDefault();
-    const start = text_input.selectionStart;
-    const end = text_input.selectionEnd;
-    const value = text_input.value;
+    const start = textInput.selectionStart;
+    const end = textInput.selectionEnd;
+    const value = textInput.value;
 
-    text_input.value = value.substring(0, start) + "\t" + value.substring(end);
+    textInput.value = value.substring(0, start) + "\t" + value.substring(end);
 
-    text_input.selectionStart = text_input.selectionEnd = start + 1;
+    textInput.selectionStart = textInput.selectionEnd = start + 1;
   }
 }
 document.addEventListener("keydown", addTabIndentation);
@@ -1584,38 +1585,47 @@ caps_lock_key.addEventListener("click", function (event) {
 });
 
 
-document.addEventListener("keydown", function (event) {
-  if (event.code === "CapsLock") {
+
+document.addEventListener("keydown", function (e) {
+  if (e.code === "CapsLock") {
     capsLockOn = !capsLockOn;
-console.log(capsLockOn)
+
     const capsElements = document.querySelectorAll('.caps');
     capsElements.forEach(function (element) {
-      if (capsLockOn) {
-        element.classList.remove('hidden');
+      if (capsLockOn && element.classList.contains('hidden')) {
+
       } else {
         element.classList.add('hidden');
       }
-    });
 
+    });
     const caseDownElements = document.querySelectorAll('.caseDown');
     caseDownElements.forEach(function (element) {
+      if (!capsLockOn && !element.classList.contains('hidden')) {
+        element.classList.add('hidden');
+      } else {
+        element.classList.add('hidden');
+      }
+
+    });
+    const caseUpElements = document.querySelectorAll('.caseUp');
+    caseUpElements.forEach(function (element) {
       if (capsLockOn) {
         element.classList.add('hidden');
       } else {
-        element.classList.remove('hidden');
+
+      }
+    });
+    const shiftCapsElements = document.querySelectorAll('.shiftCaps');
+    shiftCapsElements.forEach(function (element) {
+      if (capsLockOn) {
+        element.classList.add('hidden');
+      } else {
+        element.classList.add('hidden');
       }
     });
   }
 });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1812,45 +1822,14 @@ shift_left.addEventListener('mouseup', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var currentLanguage = localStorage.getItem('language') || 'rs';
+let currentLanguage = localStorage.getItem('language') || 'rs';
 
 
 
 function toggleLanguage() {
   keys.forEach(function (key) {
-    var en = key.querySelector(".en");
-    var rs = key.querySelector(".rs");
+    let en = key.querySelector(".en");
+    let rs = key.querySelector(".rs");
     en.classList.toggle("hidden");
     rs.classList.toggle("hidden");
   });
@@ -1859,7 +1838,7 @@ function toggleLanguage() {
   currentLanguage = currentLanguage === 'en' ? 'rs' : 'en';
   localStorage.setItem('language', currentLanguage);
 
-  var languageToggleBtnText = document.querySelector('.main__lang-button');
+  let languageToggleBtnText = document.querySelector('.main__lang-button');
 
   if (currentLanguage === 'en') {
     languageToggleBtnText.textContent = 'en';
@@ -1872,13 +1851,13 @@ function toggleLanguage() {
 
 
 
-var altPressed = false;
-var ctrlPressed = false;
+let altPressed = false;
+let ctrlPressed = false;
 document.addEventListener("keydown", function (event) {
   if (event.code === 'AltRight') {
-    alt_right.classList.add('active');
+    altRight.classList.add('active');
   } else if (event.code === 'AltLeft') {
-    alt_left.classList.add('active');
+    altLeft.classList.add('active');
   }
 
   if (event.code === 'ControlRight' || event.code === 'ControlLeft') {
@@ -1898,9 +1877,9 @@ document.addEventListener("keydown", function (event) {
 
 document.addEventListener("keyup", function (event) {
   if (event.code === 'AltRight') {
-    alt_right.classList.remove('active');
+    altRight.classList.remove('active');
   } else if (event.code === 'AltLeft') {
-    alt_left.classList.remove('active');
+    altLeft.classList.remove('active');
   }
 
   if (event.code === 'ControlRight' || event.code === 'ControlLeft') {
@@ -1915,8 +1894,8 @@ document.addEventListener("keyup", function (event) {
 
 keys.forEach(function (key) {
 
-  var en = key.querySelector(".en");
-  var rs = key.querySelector(".rs");
+  let en = key.querySelector(".en");
+  let rs = key.querySelector(".rs");
   if (currentLanguage === 'rs') {
     en.classList.add("hidden");
     rs.classList.remove("hidden");
@@ -1924,64 +1903,31 @@ keys.forEach(function (key) {
 });
 
 
-// window.addEventListener('beforeunload', function () {
-//   localStorage.setItem('language', currentLanguage);
-// });
+function saveLanguageToLocalStorage() {
+  localStorage.setItem('language', currentLanguage);
+}
+window.addEventListener('beforeunload', saveLanguageToLocalStorage);
 
-// var languageToggleBtn = document.querySelector('.main__lang-button');
-// languageToggleBtn.addEventListener('click', function () {
-//   toggleLanguage();
-// });
+function toggleLanguageClick() {
+  toggleLanguage();
+}
+const languageToggleBtnText = document.querySelector('.main__lang-button');
+languageToggleBtnText.addEventListener('click', toggleLanguageClick);
 
-// var languageToggleBtnText = document.querySelector('.main__lang-button');
-// if (currentLanguage === 'en') {
-//   languageToggleBtnText.textContent = 'en';
-// } else {
-//   languageToggleBtnText.textContent = 'ru';
-// }
-
-
-
+if (currentLanguage === 'en') {
+  languageToggleBtnText.textContent = 'en';
+} else {
+  languageToggleBtnText.textContent = 'ru';
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-text_input.focus();
+textInput.focus();
 
 document.addEventListener('click', (e) => {
-  if (!text_input.contains(e.target)) {
-    text_input.focus();
+  if (!textInput.contains(e.target)) {
+    textInput.focus();
   }
 });
-
-
-
 
 
 
@@ -1992,52 +1938,48 @@ document.addEventListener('click', (e) => {
 function pressKey(e) {
 
   const keyText = e.target.innerText;
-
-  const cursorPos = text_input.selectionStart;
-
-
-
+  const cursorPos = textInput.selectionStart;
 
   switch (keyText) {
     case 'Backspace':
 
-      text_input.value = text_input.value.slice(0, cursorPos - 1) + text_input.value.slice(cursorPos);
+      textInput.value = textInput.value.slice(0, cursorPos - 1) + textInput.value.slice(cursorPos);
 
-      text_input.selectionStart = cursorPos - 1;
-      text_input.selectionEnd = cursorPos - 1;
+      textInput.selectionStart = cursorPos - 1;
+      textInput.selectionEnd = cursorPos - 1;
       break;
     case 'Del':
-      text_input.value = text_input.value.slice(0, cursorPos) + text_input.value.slice(cursorPos + 1);
-      text_input.selectionStart = cursorPos;
-      text_input.selectionEnd = cursorPos;
+      textInput.value = textInput.value.slice(0, cursorPos) + textInput.value.slice(cursorPos + 1);
+      textInput.selectionStart = cursorPos;
+      textInput.selectionEnd = cursorPos;
       break;
     case 'Enter':
-      text_input.value = text_input.value.slice(0, cursorPos) + '\n' + text_input.value.slice(cursorPos);
-      text_input.selectionStart = cursorPos + 1;
-      text_input.selectionEnd = cursorPos + 1;
+      textInput.value = textInput.value.slice(0, cursorPos) + '\n' + textInput.value.slice(cursorPos);
+      textInput.selectionStart = cursorPos + 1;
+      textInput.selectionEnd = cursorPos + 1;
       break;
     case '▼':
-      const currentLine = text_input.value.lastIndexOf('\n', cursorPos - 1) + 1;
-      const nextLine = text_input.value.indexOf('\n', cursorPos);
+      const currentLine = textInput.value.lastIndexOf('\n', cursorPos - 1) + 1;
+      const nextLine = textInput.value.indexOf('\n', cursorPos);
       const diff = cursorPos - currentLine;
-      const newCursorPos = nextLine !== -1 ? nextLine + 1 + diff : text_input.value.length;
-      text_input.setSelectionRange(newCursorPos, newCursorPos);
+      const newCursorPos = nextLine !== -1 ? nextLine + 1 + diff : textInput.value.length;
+      textInput.setSelectionRange(newCursorPos, newCursorPos);
       break;
     case '▲':
-      const currentLine2 = text_input.value.lastIndexOf('\n', cursorPos);
-      const prevLine = text_input.value.lastIndexOf('\n', currentLine2 - 1) + 1;
+      const currentLine2 = textInput.value.lastIndexOf('\n', cursorPos);
+      const prevLine = textInput.value.lastIndexOf('\n', currentLine2 - 1) + 1;
       const diff2 = cursorPos - currentLine2 - 1;
       const newCursorPos2 = currentLine2 !== -1 ? prevLine + diff2 : 0;
-      text_input.setSelectionRange(newCursorPos2, newCursorPos2);
+      textInput.setSelectionRange(newCursorPos2, newCursorPos2);
       break;
     case '◄':
-      text_input.selectionStart = cursorPos - 1;
-      text_input.selectionEnd = cursorPos - 1;
+      textInput.selectionStart = cursorPos - 1;
+      textInput.selectionEnd = cursorPos - 1;
       break;
 
     case '►':
-      text_input.selectionStart = cursorPos + 1;
-      text_input.selectionEnd = cursorPos + 1;
+      textInput.selectionStart = cursorPos + 1;
+      textInput.selectionEnd = cursorPos + 1;
       break;
     case 'CapsLock':
 
@@ -2056,57 +1998,71 @@ function pressKey(e) {
       break;
     case 'Tab':
       e.preventDefault();
-      text_input.value = text_input.value.slice(0, cursorPos) + '\t' + text_input.value.slice(cursorPos);
-      text_input.selectionStart = cursorPos + 1;
-      text_input.selectionEnd = cursorPos + 1;
+      textInput.value = `${textInput.value.slice(0, cursorPos) + textInput.value.slice(cursorPos)} '\t'`;
+      textInput.selectionStart = cursorPos + 1;
+      textInput.selectionEnd = cursorPos + 1;
       break;
     case '':
-      text_input.value = text_input.value.slice(0, cursorPos) + ' ' + text_input.value.slice(cursorPos);
-      text_input.selectionStart = cursorPos + 1;
-      text_input.selectionEnd = cursorPos + 1;
+      const before = textInput.value.substring(0, cursorPos);
+      const after = textInput.value.substring(cursorPos);
+      textInput.value = before + ' ' + after;
+      textInput.selectionStart = cursorPos + 1;
+      textInput.selectionEnd = cursorPos + 1;
       break;
 
     default:
-      text_input.value += keyText;
+      textInput.value += keyText;
       break;
   }
 }
 
 
-keys.forEach(key => key.addEventListener('click', pressKey));
+keys.forEach((key) => key.addEventListener('click', pressKey));
+
+function addSpace() {
+  const cursorPos = textInput.selectionStart;
+  const value = textInput.value;
+  textInput.value = value.slice(0, cursorPos) + ' ' + value.slice(cursorPos);
+  textInput.selectionStart = cursorPos + 1;
+  textInput.selectionEnd = cursorPos + 1;
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === ' ') {
+    e.preventDefault();
+    addSpace();
+  }
+});
 
 
-
-
-
-
-
-
-
-nightDay.addEventListener('click', function () {
+const toggleNightMode = () => {
   toggle.classList.toggle('active');
   bodyA.classList.toggle('active');
   wrapper.classList.toggle('active');
   title.classList.toggle('active');
   infoLang.classList.toggle('active');
   nightDay.classList.toggle('active');
-  keyboard_wrapper.classList.toggle('active');
-  text_input.classList.toggle('active');
-  change_color.classList.toggle('active');
+  keyboardWrapper.classList.toggle('active');
+  textInput.classList.toggle('active');
+  changeColor.classList.toggle('active');
   footer.classList.toggle('active');
   iconD.classList.toggle('active');
   iconN.classList.toggle('active');
   textColor.classList.toggle('active');
-  for (let i = 0; i < keys.length; i++) {
-    keys[i].classList.toggle('keys_night')
+  for (let key of keys) {
+    key.classList.toggle('keys_night');
   }
-})
+}
 
-colors_input.addEventListener('input', function () {
-  for (let i = 0; i < keys.length; i++) {
-    keys[i].style.color = colors_input.value;
+nightDay.addEventListener('click', toggleNightMode);
+
+const onColorsInputChange = () => {
+  for (let key of keys) {
+    key.style.color = colorsInput.value;
   }
-  keyboard_lights.style.background = colors_input.value;
-  toggle.style.background = colors_input.value;
-  langButton.style.background = colors_input.value;
-})
+  keyboardLights.style.background = colorsInput.value;
+  toggle.style.background = colorsInput.value;
+  langButton.style.background = colorsInput.value;
+}
+
+colorsInput.addEventListener('input', onColorsInputChange);
