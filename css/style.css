@@ -339,6 +339,7 @@ body {
 }
 
 .keyboard__key.remove {
+  border: solid 1px #646464;
   animation: keys_animation 0.5s forwards;
 }
 
@@ -349,7 +350,7 @@ body {
   }
   100% {
     color: #646464;
-
+    border: solid 1px #646464;
     box-shadow: inset 3px 3px 6px #0002, inset -3px -3px 6px #ececec;
   }
 }
@@ -433,6 +434,14 @@ body {
 .main__night-day_toggle.active {
   left: 60%;
   background-color: #ececec;
+}
+
+
+.main__info-sistem {
+  padding-top: 30px;
+  font-size: 12px;
+  color: #646464;
+  text-align: right;
 }
 
 .footer.active {
