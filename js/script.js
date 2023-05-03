@@ -1,5 +1,5 @@
 const bodyA = document.querySelector('body');
-const addBlock = function () {
+const addBlock = () => {
   bodyA.className = 'body';
   const wrapper = document.createElement('div');
   wrapper.className = 'wrapper';
@@ -515,14 +515,14 @@ const addBlock = function () {
   <div class='keyboard__key key Backslash'>
     <div class='rs hidden'>
       <div class='caseDown'>\\</div>
-      <div class='caseUp hidden'>\/</div>
-      <div class='caps hidden'>\/</div>
-      <div class='shiftCaps hidden'>\/</div>
+      <div class='caseUp hidden'></div>
+      <div class='caps hidden'>\\</div>
+      <div class='shiftCaps hidden'></div>
     </div>
     <div class='en'>
       <div class='caseDown'>\\</div>
       <div class='caseUp hidden'>|</div>
-      <div class='caps hidden'>\</div>
+      <div class='caps hidden'></div>
       <div class='shiftCaps hidden'>|</div>
     </div>
   </div>
@@ -542,6 +542,17 @@ const addBlock = function () {
   </div>
 
     `);
+
+  const sm1div = document.querySelector('.Backslash .rs .caseUp');
+  const sm1 = '/';
+  sm1div.textContent = sm1;
+  const sm2div = document.querySelector('.Backslash .rs .shiftCaps');
+  const sm2 = '/';
+  sm2div.textContent = sm2;
+  const sm3div = document.querySelector('.Backslash .en .caps');
+  const sm3 = '\\';
+  sm3div.textContent = sm3;
+
   const row3 = document.createElement('div');
   row3.className = 'keyboard__row';
   keyboardButtons.append(row3);
@@ -1054,6 +1065,7 @@ const addBlock = function () {
 
     `);
 
+
   const sistem = document.createElement('div');
   sistem.className = 'main__info-sistem';
   sistem.innerText = 'Клавиатура создана в операционной системе Windows';
@@ -1097,9 +1109,6 @@ const addBlock = function () {
 addBlock('');
 
 
-
-
-
 const keys = document.querySelectorAll('.keyboard__key');
 const spaceKey = document.querySelector('.space_key');
 const shiftLeft = document.querySelector('.shift_left');
@@ -1116,14 +1125,7 @@ const arrowLeft = document.querySelector('.ArrowLeft');
 const arrowDown = document.querySelector('.ArrowDown');
 const arrowRight = document.querySelector('.ArrowRight');
 const win = document.querySelector('.win_key');
-const langButton = document.querySelector('.main__lang-button');
 const textInput = document.querySelector('.keyboard__text-area');
-const colorsInput = document.querySelector('.main__colors-input');
-const keyboardLights = document.querySelector('.keyboard__lights');
-const toggle = document.querySelector('.main__night-day_toggle');
-const rs = document.querySelector('.rs');
-const en = document.querySelector('.en');
-const textColor = document.querySelector('.main__text-color');
 const backq = document.querySelector('.Backquote');
 const dig1 = document.querySelector('.Digit1');
 const dig2 = document.querySelector('.Digit2');
@@ -1149,16 +1151,6 @@ const period = document.querySelector('.Period');
 const slash = document.querySelector('.Slash');
 
 
-
-class KeyboardDecor {
-  constructor() {
-    this.changeColor = document.querySelector('.main__colors-box');
-    this.colorsInput = document.querySelector('.main__colors-input');
-    this.keyboardLights = document.querySelector('.keyboard__lights');
-  }
-}
-const keyboardDecor = new KeyboardDecor();
-
 class NightMode {
   constructor() {
     this.toggle = document.querySelector('.main__night-day_toggle');
@@ -1169,14 +1161,15 @@ class NightMode {
     this.nightDay = document.querySelector('.main__night-day');
     this.keyboardWrapper = document.querySelector('.keyboard__wrapper');
     this.textInput = document.querySelector('.keyboard__text-area');
-    this.changeColor = keyboardDecor.changeColor;
-    this.colorsInput = keyboardDecor.colorsInput;
-    this.keyboardLights = keyboardDecor.keyboardLights;
+    this.changeColor = document.querySelector('.main__colors-box');
+    this.colorsInput = document.querySelector('.main__colors-input');
+    this.keyboardLights = document.querySelector('.keyboard__lights');
     this.footer = document.querySelector('.footer');
     this.iconD = document.querySelector('.footer__icon-d');
     this.iconN = document.querySelector('.footer__icon-n');
     this.textColor = document.querySelector('.main__text-color');
     this.keys = document.querySelectorAll('.keyboard__key');
+    this.langButton = document.querySelector('.main__lang-button');
   }
 
   toggleNightMode() {
@@ -1193,35 +1186,46 @@ class NightMode {
     this.iconD.classList.toggle('active');
     this.iconN.classList.toggle('active');
     this.textColor.classList.toggle('active');
-    for (const key of this.keys) {
+    this.keyboardLights.classList.toggle('active');
+    this.langButton.classList.toggle('active');
+    this.keys.forEach((key) => {
       key.classList.toggle('keys_night');
-    }
+    });
   }
+
+
+  onColorsInputChange() {
+    const colorValue = this.colorsInput.value;
+    this.keys.forEach((key) => {
+      const updatedKey = key;
+      const updatedColorValue = colorValue;
+      updatedKey.style.color = updatedColorValue;
+    });
+    this.keyboardLights.style.background = colorValue;
+    this.toggle.style.background = colorValue;
+    this.langButton.style.background = colorValue;
+  }
+
   setupEventListeners() {
     this.nightDay.addEventListener('click', () => this.toggleNightMode());
+    this.colorsInput.addEventListener('input', () => this.onColorsInputChange());
   }
 }
 
 const nightMode = new NightMode();
 nightMode.setupEventListeners();
 
-const onColorsInputChange = () => {
-  for (const key of keys) {
-    key.style.color = colorsInput.value;
+
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
+    if (e.code === 'ControlLeft') {
+      ctrlLeft.classList.add('active');
+    }
+    if (e.code === 'ControlRight') {
+      ctrlRight.classList.add('active');
+    }
+    return;
   }
-  keyboardLights.style.background = colorsInput.value;
-  toggle.style.background = colorsInput.value;
-  langButton.style.background = colorsInput.value;
-};
-
-colorsInput.addEventListener('input', onColorsInputChange);
-
-
-let ctrlPressed4 = false;
-let savedKeys = {};
-
-window.addEventListener('keydown', function (e) {
-
 
   for (let i = 0; i < keys.length; i += 1) {
     const arr = keys[i].getAttribute('class').split(' ')[2];
@@ -1242,7 +1246,6 @@ window.addEventListener('keydown', function (e) {
       const den = keys[i].querySelector('.en .caseDown');
 
       if (!lnrs.classList.contains('hidden') && lnrs && shrs.classList.contains('hidden') && uprs.classList.contains('hidden') && caprs.classList.contains('hidden') && !drs.classList.contains('hidden')) {
-
         e.preventDefault();
         const value = lnrs.querySelector('.caseDown').textContent;
         const cursorPos = textInput.selectionStart;
@@ -1251,8 +1254,7 @@ window.addEventListener('keydown', function (e) {
         textInput.value = textBeforeCursor + value + textAfterCursor;
         textInput.selectionStart = cursorPos + value.length;
         textInput.selectionEnd = cursorPos + value.length;
-      }
-      else if (!lnen.classList.contains('hidden') && lnen && shen.classList.contains('hidden') && upen.classList.contains('hidden') && capen.classList.contains('hidden') && !den.classList.contains('hidden')) {
+      } else if (!lnen.classList.contains('hidden') && lnen && shen.classList.contains('hidden') && upen.classList.contains('hidden') && capen.classList.contains('hidden') && !den.classList.contains('hidden')) {
         e.preventDefault();
         const value = lnen.querySelector('.caseDown').textContent;
         const cursorPos = textInput.selectionStart;
@@ -1316,8 +1318,6 @@ window.addEventListener('keydown', function (e) {
         textInput.selectionStart = cursorPos + value.length;
         textInput.selectionEnd = cursorPos + value.length;
       }
-
-
       keys[i].classList.add('active');
     }
 
@@ -1391,7 +1391,6 @@ window.addEventListener('keydown', function (e) {
       slash.classList.add('active');
     }
     if (e.code === 'ShiftLeft' && e.location === 1) {
-
       shiftLeft.classList.add('active');
     }
     if (e.code === 'ShiftRight' && e.location === 2) {
@@ -1400,13 +1399,11 @@ window.addEventListener('keydown', function (e) {
     if (e.code === 'CapsLock') {
       capsLockKey.classList.add('active');
     }
-
     if (e.code === 'AltLeft' && e.location === 1) {
       altLeft.classList.add('active');
     }
     if (e.code === 'AltRight' && e.location === 2) {
       altRight.classList.add('active');
-
     }
     if (e.code === 'Tab') {
       tab.classList.add('active');
@@ -1435,13 +1432,8 @@ window.addEventListener('keydown', function (e) {
   }
 });
 
-
-
-window.addEventListener('keyup', function (e) {
+window.addEventListener('keyup', (e) => {
   if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
-    ctrlPressed4 = false;
-    savedKeys = {};
-
     if (e.code === 'ControlLeft') {
       ctrlLeft.classList.remove('active');
     }
@@ -1452,17 +1444,14 @@ window.addEventListener('keyup', function (e) {
   }
 
 
-
   for (let i = 0; i < keys.length; i += 1) {
-    const keyClass = keys[i].getAttribute('class').split(' ').find(c => c.startsWith('Key'));
+    const keyClass = keys[i].getAttribute('class').split(' ').find((c) => c.startsWith('Key'));
 
     if (e.code === keyClass && !['AltLeft', 'AltRight', 'ShiftRight', 'ShiftLeft'].includes(e.code)) {
       keys[i].classList.remove('active');
     }
   }
 });
-
-
 
 
 window.addEventListener('keyup', (e) => {
@@ -1557,8 +1546,6 @@ window.addEventListener('keyup', (e) => {
       capsLockKey.classList.remove('active');
       capsLockKey.classList.remove('remove');
     }
-
-
     if (e.code === 'AltLeft' && e.location === 1) {
       altLeft.classList.remove('active');
       altLeft.classList.remove('remove');
@@ -1594,7 +1581,6 @@ window.addEventListener('keyup', (e) => {
     if (e.code === 'MetaLeft') {
       win.classList.remove('active');
       win.classList.remove('remove');
-
     }
     if (e.code === 'Backspace') {
       backspace.classList.remove('active');
@@ -1609,18 +1595,15 @@ window.addEventListener('keyup', (e) => {
 function addTabIndentation(e) {
   if (e.key === 'Tab') {
     e.preventDefault();
-    const start = textInput.selectionStart;
-    const end = textInput.selectionEnd;
-    const value = textInput.value;
+    const { selectionStart: start, selectionEnd: end, value } = textInput;
 
-    textInput.value = value.substring(0, start) + '\t' + value.substring(end);
-
-    textInput.selectionStart = textInput.selectionEnd = start + 1;
+    textInput.value = `${value.substring(0, start)}\t${value.substring(end)}`;
+    textInput.selectionStart = start + 1;
+    textInput.selectionEnd = start + 1;
   }
 }
+
 document.addEventListener('keydown', addTabIndentation);
-
-
 
 let capsLockOn = false;
 
@@ -1651,38 +1634,31 @@ capsLockKey.addEventListener('click', (event) => {
 });
 
 
-document.addEventListener('keydown', function (e) {
+document.addEventListener('keydown', (e) => {
   if (e.code === 'CapsLock') {
     capsLockOn = !capsLockOn;
-
     const capsElements = document.querySelectorAll('.caps');
-    capsElements.forEach(function (element) {
-      if (capsLockOn && element.classList.contains('hidden')) {
-
-      } else {
+    capsElements.forEach((element) => {
+      if (!capsLockOn && !element.classList.contains('hidden')) {
         element.classList.add('hidden');
       }
-
     });
     const caseDownElements = document.querySelectorAll('.caseDown');
-    caseDownElements.forEach(function (element) {
+    caseDownElements.forEach((element) => {
       if (!capsLockOn && !element.classList.contains('hidden')) {
         element.classList.add('hidden');
       } else {
         element.classList.add('hidden');
       }
-
     });
     const caseUpElements = document.querySelectorAll('.caseUp');
-    caseUpElements.forEach(function (element) {
+    caseUpElements.forEach((element) => {
       if (capsLockOn) {
         element.classList.add('hidden');
-      } else {
-
       }
     });
     const shiftCapsElements = document.querySelectorAll('.shiftCaps');
-    shiftCapsElements.forEach(function (element) {
+    shiftCapsElements.forEach((element) => {
       if (capsLockOn) {
         element.classList.add('hidden');
       } else {
@@ -1693,15 +1669,9 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-
-
-keys.forEach(key => {
-
-  document.addEventListener('keydown', event => {
-
-
+keys.forEach((key) => {
+  document.addEventListener('keydown', (event) => {
     if (event.shiftKey) {
-
       const caseUp = key.querySelectorAll('.caseUp');
       const shiftCaps = key.querySelectorAll('.shiftCaps');
       const caseDown = key.querySelectorAll('.caseDown');
@@ -1709,17 +1679,15 @@ keys.forEach(key => {
 
 
       if (!event.getModifierState('CapsLock')) {
-        caseUp.forEach(function (element) {
+        caseUp.forEach((element) => {
           if (!event.getModifierState('CapsLock')) {
-
             element.classList.remove('hidden');
           } else {
             element.classList.add('hidden');
           }
         });
-        caseDown.forEach(function (element) {
+        caseDown.forEach((element) => {
           if (!event.getModifierState('CapsLock')) {
-
             element.classList.add('hidden');
           } else {
             element.classList.remove('hidden');
@@ -1727,17 +1695,15 @@ keys.forEach(key => {
         });
       }
       if (event.getModifierState('CapsLock')) {
-        shiftCaps.forEach(function (element) {
+        shiftCaps.forEach((element) => {
           if (event.getModifierState('CapsLock')) {
-
             element.classList.remove('hidden');
           } else {
             element.classList.add('hidden');
           }
         });
-        caps.forEach(function (element) {
+        caps.forEach((element) => {
           if (event.getModifierState('CapsLock')) {
-
             element.classList.add('hidden');
           } else {
             element.classList.remove('hidden');
@@ -1747,28 +1713,23 @@ keys.forEach(key => {
     }
   });
 
-  window.addEventListener('keyup', event => {
-
+  window.addEventListener('keyup', (event) => {
     if (!event.shiftKey) {
       const caseUp = key.querySelectorAll('.caseUp');
       const shiftCaps = key.querySelectorAll('.shiftCaps');
       const caseDown = key.querySelectorAll('.caseDown');
       const caps = key.querySelectorAll('.caps');
 
-
-
       if (!event.getModifierState('CapsLock')) {
-        caseUp.forEach(function (element) {
+        caseUp.forEach((element) => {
           if (!event.getModifierState('CapsLock')) {
-
             element.classList.add('hidden');
           } else {
             element.classList.remove('hidden');
           }
         });
-        caseDown.forEach(function (element) {
+        caseDown.forEach((element) => {
           if (!event.getModifierState('CapsLock')) {
-
             element.classList.remove('hidden');
           } else {
             element.classList.add('hidden');
@@ -1776,17 +1737,15 @@ keys.forEach(key => {
         });
       }
       if (event.getModifierState('CapsLock')) {
-        shiftCaps.forEach(function (element) {
+        shiftCaps.forEach((element) => {
           if (event.getModifierState('CapsLock')) {
-
             element.classList.add('hidden');
           } else {
             element.classList.remove('hidden');
           }
         });
-        caps.forEach(function (element) {
+        caps.forEach((element) => {
           if (event.getModifierState('CapsLock')) {
-
             element.classList.remove('hidden');
           } else {
             element.classList.add('hidden');
@@ -1798,25 +1757,24 @@ keys.forEach(key => {
 });
 
 
-
 let shiftOn = false;
 
-shiftLeft.addEventListener('mousedown', function () {
+shiftLeft.addEventListener('mousedown', () => {
   shiftOn = !shiftOn;
 
   keys.forEach((key) => {
-    const en = key.querySelector('.en');
-    const rs = key.querySelector('.rs');
+    const en1 = key.querySelector('.en');
+    const rs1 = key.querySelector('.rs');
 
-    const caseDownEn = en.querySelector('.caseDown');
-    const caseUpEn = en.querySelector('.caseUp');
-    const capsEn = en.querySelector('.caps');
-    const shiftCapsEn = en.querySelector('.shiftCaps');
+    const caseDownEn = en1.querySelector('.caseDown');
+    const caseUpEn = en1.querySelector('.caseUp');
+    const capsEn = en1.querySelector('.caps');
+    const shiftCapsEn = en1.querySelector('.shiftCaps');
 
-    const caseDownRs = rs.querySelector('.caseDown');
-    const caseUpRs = rs.querySelector('.caseUp');
-    const capsRs = rs.querySelector('.caps');
-    const shiftCapsRs = rs.querySelector('.shiftCaps');
+    const caseDownRs = rs1.querySelector('.caseDown');
+    const caseUpRs = rs1.querySelector('.caseUp');
+    const capsRs = rs1.querySelector('.caps');
+    const shiftCapsRs = rs1.querySelector('.shiftCaps');
 
     if (!capsEn.classList.contains('hidden') && !capsRs.classList.contains('hidden')) {
       if (shiftOn) {
@@ -1825,7 +1783,7 @@ shiftLeft.addEventListener('mousedown', function () {
         capsRs.classList.add('hidden');
         shiftCapsRs.classList.remove('hidden');
       }
-    } else {
+    } else if (capsEn.classList.contains('hidden') && capsRs.classList.contains('hidden')) {
       if (shiftOn) {
         caseDownEn.classList.add('hidden');
         caseUpEn.classList.remove('hidden');
@@ -1833,24 +1791,23 @@ shiftLeft.addEventListener('mousedown', function () {
         caseUpRs.classList.remove('hidden');
       }
     }
-
   });
 });
 
-shiftLeft.addEventListener('mouseup', function () {
+shiftLeft.addEventListener('mouseup', () => {
   keys.forEach((key) => {
-    const en = key.querySelector('.en');
-    const rs = key.querySelector('.rs');
+    const en1 = key.querySelector('.en');
+    const rs1 = key.querySelector('.rs');
 
-    const caseDownEn = en.querySelector('.caseDown');
-    const caseUpEn = en.querySelector('.caseUp');
-    const capsEn = en.querySelector('.caps');
-    const shiftCapsEn = en.querySelector('.shiftCaps');
+    const caseDownEn = en1.querySelector('.caseDown');
+    const caseUpEn = en1.querySelector('.caseUp');
+    const capsEn = en1.querySelector('.caps');
+    const shiftCapsEn = en1.querySelector('.shiftCaps');
 
-    const caseDownRs = rs.querySelector('.caseDown');
-    const caseUpRs = rs.querySelector('.caseUp');
-    const capsRs = rs.querySelector('.caps');
-    const shiftCapsRs = rs.querySelector('.shiftCaps');
+    const caseDownRs = rs1.querySelector('.caseDown');
+    const caseUpRs = rs1.querySelector('.caseUp');
+    const capsRs = rs1.querySelector('.caps');
+    const shiftCapsRs = rs1.querySelector('.shiftCaps');
 
     if (!shiftCapsEn.classList.contains('hidden') && !shiftCapsRs.classList.contains('hidden')) {
       capsEn.classList.remove('hidden');
@@ -1869,16 +1826,83 @@ shiftLeft.addEventListener('mouseup', function () {
 });
 
 
+let shiftOn1 = false;
+
+shiftRight.addEventListener('mousedown', () => {
+  shiftOn1 = !shiftOn1;
+
+  keys.forEach((key) => {
+    const en1 = key.querySelector('.en');
+    const rs1 = key.querySelector('.rs');
+
+    const caseDownEn = en1.querySelector('.caseDown');
+    const caseUpEn = en1.querySelector('.caseUp');
+    const capsEn = en1.querySelector('.caps');
+    const shiftCapsEn = en1.querySelector('.shiftCaps');
+
+    const caseDownRs = rs1.querySelector('.caseDown');
+    const caseUpRs = rs1.querySelector('.caseUp');
+    const capsRs = rs1.querySelector('.caps');
+    const shiftCapsRs = rs1.querySelector('.shiftCaps');
+
+    if (!capsEn.classList.contains('hidden') && !capsRs.classList.contains('hidden')) {
+      if (shiftOn1) {
+        capsEn.classList.add('hidden');
+        shiftCapsEn.classList.remove('hidden');
+        capsRs.classList.add('hidden');
+        shiftCapsRs.classList.remove('hidden');
+      }
+    } else if (capsEn.classList.contains('hidden') && capsRs.classList.contains('hidden')) {
+      if (shiftOn1) {
+        caseDownEn.classList.add('hidden');
+        caseUpEn.classList.remove('hidden');
+        caseDownRs.classList.add('hidden');
+        caseUpRs.classList.remove('hidden');
+      }
+    }
+  });
+});
+
+shiftRight.addEventListener('mouseup', () => {
+  keys.forEach((key) => {
+    const en1 = key.querySelector('.en');
+    const rs1 = key.querySelector('.rs');
+
+    const caseDownEn = en1.querySelector('.caseDown');
+    const caseUpEn = en1.querySelector('.caseUp');
+    const capsEn = en1.querySelector('.caps');
+    const shiftCapsEn = en1.querySelector('.shiftCaps');
+
+    const caseDownRs = rs1.querySelector('.caseDown');
+    const caseUpRs = rs1.querySelector('.caseUp');
+    const capsRs = rs1.querySelector('.caps');
+    const shiftCapsRs = rs1.querySelector('.shiftCaps');
+
+    if (!shiftCapsEn.classList.contains('hidden') && !shiftCapsRs.classList.contains('hidden')) {
+      capsEn.classList.remove('hidden');
+      shiftCapsEn.classList.add('hidden');
+      capsRs.classList.remove('hidden');
+      shiftCapsRs.classList.add('hidden');
+    } else {
+      caseDownEn.classList.remove('hidden');
+      caseUpEn.classList.add('hidden');
+      caseDownRs.classList.remove('hidden');
+      caseUpRs.classList.add('hidden');
+    }
+  });
+
+  shiftOn1 = false;
+});
 
 let currentLanguage = localStorage.getItem('language') || 'rs';
 
 
 function toggleLanguage() {
-  keys.forEach(function (key) {
-    const en = key.querySelector('.en');
-    const rs = key.querySelector('.rs');
-    en.classList.toggle('hidden');
-    rs.classList.toggle('hidden');
+  keys.forEach((key) => {
+    const en1 = key.querySelector('.en');
+    const rs1 = key.querySelector('.rs');
+    en1.classList.toggle('hidden');
+    rs1.classList.toggle('hidden');
   });
 
 
@@ -1895,35 +1919,9 @@ function toggleLanguage() {
 }
 
 
-for (const key of keys) {
-
-  key.addEventListener('keydown', () => {
-    if (!key.querySelector('.en').classList.contains('hidden')) { // язык - английский
-
-      if (key.classList.contains('Key1') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '!';
-      } else if (key.classList.contains('Key2') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '@';
-      } else if (key.classList.contains('Key3') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '#';
-      }
-    } else { // язык - русский
-      if (key.classList.contains('Key1') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '!';
-      } else if (key.classList.contains('Key2') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '';
-      } else if (key.classList.contains('Key3') && key.querySelector('.shiftCaps').classList.contains('hidden')) {
-        textInput.value += '№';
-      }
-    }
-  });
-}
-
-
-
 let altPressed = false;
 let ctrlPressed = false;
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', (event) => {
   if (event.code === 'AltRight') {
     altRight.classList.add('active');
   } else if (event.code === 'AltLeft') {
@@ -1935,18 +1933,14 @@ document.addEventListener('keydown', function (event) {
   }
   if (event.code === 'AltRight' || event.code === 'AltLeft') {
     altPressed = true;
-
-
   }
   if (ctrlPressed && altPressed) {
     toggleLanguage();
   }
-
 });
 
 
-
-document.addEventListener('keyup', function (event) {
+document.addEventListener('keyup', (event) => {
   if (event.code === 'AltRight') {
     altRight.classList.remove('active');
   } else if (event.code === 'AltLeft') {
@@ -1958,16 +1952,15 @@ document.addEventListener('keyup', function (event) {
   }
   if (event.code === 'AltRight' || event.code === 'AltLeft') {
     altPressed = false;
-
   }
 });
 
 function toggleLanguage1(key) {
-  const en = key.querySelector('.en');
-  const rs = key.querySelector('.rs');
+  const en1 = key.querySelector('.en');
+  const rs1 = key.querySelector('.rs');
   if (currentLanguage === 'rs') {
-    en.classList.add('hidden');
-    rs.classList.remove('hidden');
+    en1.classList.add('hidden');
+    rs1.classList.remove('hidden');
   }
 }
 keys.forEach(toggleLanguage1);
@@ -1999,15 +1992,7 @@ document.addEventListener('click', (e) => {
 });
 
 
-
-
-
-
-
-
-
 function pressKey(e) {
-
   const keyText = e.target.innerText;
   const cursorPos = textInput.selectionStart;
 
@@ -2056,24 +2041,24 @@ function pressKey(e) {
       textInput.selectionEnd = cursorPos + 1;
       break;
     }
-    case 'CapsLock':
-
+    case 'CapsLock': {
       break;
-    case 'Shift':
-
+    }
+    case 'Shift': {
       break;
-    case 'Ctrl':
-
+    }
+    case 'Ctrl': {
       break;
-    case 'Win':
-
+    }
+    case 'Win': {
       break;
-    case 'Alt':
-
+    }
+    case 'Alt': {
       break;
+    }
     case 'Tab': {
       e.preventDefault();
-      textInput.value = `${textInput.value.slice(0, cursorPos) + textInput.value.slice(cursorPos)} '\t'`;
+      textInput.value = `${textInput.value.slice(0, cursorPos)}\t${textInput.value.slice(cursorPos)}`;
       textInput.selectionStart = cursorPos + 1;
       textInput.selectionEnd = cursorPos + 1;
       break;
@@ -2086,9 +2071,10 @@ function pressKey(e) {
       textInput.selectionEnd = cursorPos + 1;
       break;
     }
-    default:
+    default: {
       textInput.value += keyText;
       break;
+    }
   }
 }
 
@@ -2098,7 +2084,7 @@ keys.forEach((key) => key.addEventListener('click', pressKey));
 function addSpace() {
   const cursorPos = textInput.selectionStart;
   const { value } = textInput;
-  textInput.value = `${value.slice(0, cursorPos)} + ' ' + ${value.slice(cursorPos)}`;
+  textInput.value = `${value.slice(0, cursorPos)} ${value.slice(cursorPos)}`;
   textInput.selectionStart = cursorPos + 1;
   textInput.selectionEnd = cursorPos + 1;
 }
